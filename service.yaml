@@ -1,0 +1,13 @@
+name: fifth
+repo:
+  remote: https://github.com/veniyer/python-samples.git
+  local: fifth
+runtime: python 
+invoke:
+  basepath: hello-fn
+  module: hello
+  function: hellofn
+  parameters: 
+    name: name
+    type: string
+
