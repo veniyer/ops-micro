@@ -1,6 +1,15 @@
 # Ops-Micro - Serverless Containerized Microservices
 
-Ops-Micro is [visioned to be] an end-to-end onboarding and operating platform for serverless, containerized microservices.
+Ops-Micro is (visioned to be) an end-to-end onboarding and operating platform for serverless, containerized microservices.
+
+### Getting started
+
+Define a service in the service.yaml
+
+```
+python3 services.py -c service.yaml
+```
+
 
 ### Hardware
 
@@ -17,7 +26,7 @@ fn 0.5.96
 Docker 19.03.8
 ```
 
-It is intended to work for your codebase in
+It is intended in future to work for your codebase in
 
 ```
 Go
