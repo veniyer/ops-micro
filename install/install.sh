@@ -45,12 +45,13 @@ else
     exit 1
 fi
 
-url='https://github.com/veniyer/ops-micro/cli/releases/download'
+#url='https://github.com/veniyer/ops-micro/cli/releases/download'
+url='https://raw.githubusercontent.com/veniyer/ops-micro/install/install/install.sh'
 
 # perform some very rudimentary platform detection
 case "$(uname)" in
   Linux)
-    $sh_c "$curl /tmp/ops-micro_linux $url/$version/ops-micro_linux"
+    $sh_c "$curl /tmp/ops-micro_linux $url"
     $sh_c "mv /tmp/ops-micro_linux /usr/local/bin/ops-micro"
     $sh_c "chmod +x /usr/local/bin/ops-micro"
     ops-micro --version
