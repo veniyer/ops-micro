@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-
+echo >&1 'Got here'
 # Install script to install fn
 
 #version=`curl --silent https://api.github.com/repos/ops-micro/cli/releases/latest  | grep tag_name | cut -f 2 -d : | cut -f 2 -d '"'`
@@ -8,7 +8,7 @@ version='0.1'
 command_exists() {
   command -v "$@" > /dev/null 2>&1
 }
-
+echo >&1 $(uname -m)
 case "$(uname -m)" in
   *64)
     ;;
@@ -20,7 +20,7 @@ case "$(uname -m)" in
 esac
 
 user="$(id -un 2>/dev/null || true)"
-
+echo $user
 sh_c='sh -c'
 if [ "$user" != 'root' ]; then
   if command_exists sudo; then
@@ -51,10 +51,10 @@ url='https://raw.githubusercontent.com/veniyer/ops-micro/install/install/install
 # perform some very rudimentary platform detection
 case "$(uname)" in
   Linux)
-    $sh_c "$curl /tmp/ops-micro_linux $url"
-    $sh_c "mv /tmp/ops-micro_linux /usr/local/bin/ops-micro"
-    $sh_c "chmod +x /usr/local/bin/ops-micro"
-    ops-micro --version
+    $sh_c "$curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh"
+    $sh_c "yum install docker-ce docker-ce-cli containerd.io"
+    #$sh_c "chmod +x /usr/local/bin/ops-micro"
+    #ops-micro --version
     ;;
   *)
     cat >&2 <<'EOF'
