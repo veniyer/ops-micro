@@ -51,12 +51,14 @@ url='https://raw.githubusercontent.com/veniyer/ops-micro/install/install/install
 # perform some very rudimentary platform detection
 case "$(uname)" in
   Linux)
-    $sh_c "$curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh"
     $sh_c "yum install -y yum-utils"
     $sh_c "yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo"
-    $sh_c "yum install docker-ce docker-ce-cli containerd.io"
+    $sh_c "yum install -y docker-ce docker-ce-cli containerd.io"
+    $sh_c "$curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh"
+    $sh_c "systemctl start docker"
+    $sh_c "fn start &"
     #$sh_c "chmod +x /usr/local/bin/ops-micro"
     #ops-micro --version
     ;;
