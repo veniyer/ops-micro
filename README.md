@@ -2,9 +2,28 @@
 
 Ops-Micro is (visioned to be) an end-to-end onboarding and operating platform for serverless, containerized microservices.
 
-### Getting started
+## Getting started
 
-Define a service in the service.yaml
+Install ops-micro and start its servers using the following
+
+```curl https://raw.githubusercontent.com/veniyer/ops-micro/master/install/install.sh | sh```
+
+Define a service in the <service-name>.yaml. The contents of the file are
+```  
+name: sixth
+repo:
+  remote: https://github.com/veniyer/python-samples.git
+  local: sixth
+runtime: python 
+invoke:
+  basepath: hello-fn
+  module: hello
+  function: hellofn
+  parameters: 
+    name: name
+    type: string
+```
+Then create a service using the following command
 
 ```
 python3 services.py -c service.yaml
@@ -39,15 +58,15 @@ Ruby
 
 * [Docker](http://www.docker.com) - For the containerized environment
 * [fn](https://fnproject.io/) - For the serverless environment
-* [Ansible](https://www.ansible.com) - For performance optimization
+* [Ansible](https://www.ansible.com) - For configuration management
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+For contributing, feel free to fork or branch and submit pull requests.
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/veniyer/ops-micro/tags). 
+This is version 0.1 of the software.
 
 ## Authors
 
