@@ -56,7 +56,7 @@ case "$(uname)" in
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo"
     $sh_c "yum install -y docker-ce docker-ce-cli containerd.io"
-    $sh_c "$curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh"
+    $sh_c "curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh"
     $sh_c "systemctl start docker"
     $sh_c "fn start &"
     #$sh_c "chmod +x /usr/local/bin/ops-micro"
