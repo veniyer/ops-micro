@@ -10,25 +10,40 @@ Install ops-micro and start its servers using the following
 
 Define a service in the <service-name>.yaml. The contents of the file are
 ```  
-name: sixth
+# name of the microservice
+name: foo
+# remote repo and local clone location
 repo:
   remote: https://github.com/veniyer/python-samples.git
-  local: sixth
+  local: foo
+# runtime for the microservice. Default is python v3.6
 runtime: python 
+# how to invoke the microservice
 invoke:
+  # basepath of the python function within the source code repo
   basepath: hello-fn
+  # if a module has to be included to call this python function
   module: hello
+  # name of the function
   function: hellofn
+  # parameter(s) for the function. Needs to be modified to be a list
   parameters: 
     name: name
     type: string
 ```
+
 Then create a service using the following command
 
 ```
 python3 services.py -c service.yaml
 ```
+where ```service.yaml``` is the service definition file as specified above
 
+Deploy service using the following command
+
+```
+./service-deploy.sh ./foo fooapp foofn
+```
 
 ### Hardware
 
