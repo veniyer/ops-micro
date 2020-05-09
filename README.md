@@ -43,8 +43,13 @@ Deploy service using the following command
 
 ```
 ./service-deploy.sh ./foo fooapp foofn
+.
+.
+http://localhost:8080/invoke/<service-id>
 ```
+Then you can access the service through that endpoint in the following manner
 
+```curl -X POST -d '{"name":"Bob"}' http://localhost:8080/invoke/<service-id>```
 ### Hardware
 
 Ops-Micro will work seamlessly across your data centers and Cloud Providers.
